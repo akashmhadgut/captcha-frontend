@@ -135,11 +135,7 @@ const Captcha = () => {
       }
     } catch (err) {
       console.error("Submit Error:", err);
-      const serverMsg = err.response?.data?.message || err.message;
-      const debugIdStatus = captcha?.captchaId ? "PRESENT" : "MISSING";
-      
-      // FALLBACK DEBUGGING: Alert the user directly
-      window.alert(`⚠️ SUBMIT ERROR ⚠️\n\nServer Message: "${serverMsg}"\nCaptcha ID Sent: ${debugIdStatus}`);
+      toast.error("Submit error: " + (err.response?.data?.message || err.message));
     } finally {
       setLoading(false);
     }
