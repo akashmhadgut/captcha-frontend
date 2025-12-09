@@ -112,7 +112,10 @@ const Captcha = () => {
 
     try {
       setLoading(true);
-      const { data } = await API.post("/captchas/submit", { answer });
+      const payload = { answer, captchaId: captcha?.captchaId };
+      console.log("Sending Payload to Server:", payload);
+      
+      const { data } = await API.post("/captchas/submit", payload);
 
       if (data.success) {
         setEarnings(data.earned || 0);
@@ -406,4 +409,3 @@ const Captcha = () => {
 };
 
 export default Captcha;
-            
