@@ -132,7 +132,11 @@ const Captcha = () => {
       }
     } catch (err) {
       console.error("Submit Error:", err);
-      toast.error("Submit error: " + (err.response?.data?.message || err.message));
+      const serverMsg = err.response?.data?.message || err.message;
+      const debugIdStatus = captcha?.captchaId ? "PRESENT" : "MISSING";
+      
+      // FALLBACK DEBUGGING: Alert the user directly
+      window.alert(`⚠️ SUBMIT ERROR ⚠️\n\nServer Message: "${serverMsg}"\nCaptcha ID Sent: ${debugIdStatus}`);
     } finally {
       setLoading(false);
     }
@@ -251,6 +255,7 @@ const Captcha = () => {
           <div className="lg:col-span-2 rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 p-8">
             <h2 className="text-2xl font-bold text-white mb-6">🔐 Solve the Captcha</h2>
             {captcha ? (
+              <>
               <div>
                 <div className="mb-6">
                   <div className="flex items-center gap-3 mb-4">
@@ -308,6 +313,14 @@ const Captcha = () => {
                   </div>
                 </form>
               </div>
+              <div>
+                 {/* DEBUG INFO - REMOVE LATER */}
+                 <div className="mt-4 p-2 bg-black/50 rounded text-xs text-slate-400 font-mono">
+                    <p>Debug Info:</p>
+                    <p>Captcha ID: {captcha.captchaId ? (captcha.captchaId.slice(0, 10) + '...') : <span className="text-red-500">MISSING (Backend not updated)</span>}</p>
+                 </div>
+              </div>
+              </>
             ) : null}
           </div>
 

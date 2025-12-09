@@ -1,0 +1,9 @@
+@echo off
+echo Adding Debug UI...
+git add src/pages/user/Captcha.jsx
+
+echo Committing...
+git commit -m "Add visible debug info for Captcha ID"
+
+echo Pushing...
+git push origin main

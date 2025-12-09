@@ -1,0 +1,9 @@
+@echo off
+echo Adding error logging...
+git add src/pages/user/Captcha.jsx
+
+echo Committing...
+git commit -m "Add explicit error logging to captcha submit"
+
+echo Pushing...
+git push origin main

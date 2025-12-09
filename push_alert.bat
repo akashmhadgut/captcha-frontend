@@ -1,0 +1,9 @@
+@echo off
+echo Adding Alert Debugging...
+git add src/pages/user/Captcha.jsx
+
+echo Committing...
+git commit -m "Debug: Use Alert for submit error visibility"
+
+echo Pushing...
+git push origin main
