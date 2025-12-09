@@ -130,8 +130,9 @@ const Captcha = () => {
         setStats((p) => ({ ...p, failed: p.failed + 1 }));
         toast.error("Incorrect! Try again");
       }
-    } catch {
-      toast.error("Submit error");
+    } catch (err) {
+      console.error("Submit Error:", err);
+      toast.error("Submit error: " + (err.response?.data?.message || err.message));
     } finally {
       setLoading(false);
     }
