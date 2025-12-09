@@ -41,6 +41,7 @@ const Login = () => {
         navigate("/plan-selection"); // Go to Plan Selection for new/existing users
       }
     } catch (err) {
+      console.error("Login Error:", err);
       toast.error(err.response?.data?.message || "Login failed");
     } finally {
       setLoading(false);
